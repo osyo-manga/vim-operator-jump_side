@@ -39,5 +39,25 @@ function! operator#jump_side#tail_out(motion_wise)
 endfunction
 
 
+function! operator#jump_side#toggle(motion_wise, ...)
+	echom a:motion_wise
+	let pos = []
+	if g:operator_jump_side_toggle_start_pos == getpos("']")
+		let pos = getpos("'[")[1:]
+	endif
+	if g:operator_jump_side_toggle_start_pos == getpos("'[")
+		let pos = getpos("']")[1:]
+	endif
+	if empty(pos)
+		return
+	endif
+	if a:motion_wise == "line"
+		call cursor(pos[0], 1)
+	else
+		call cursor(pos)
+	endif
+endfunction
+
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
