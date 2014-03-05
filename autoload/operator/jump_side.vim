@@ -40,7 +40,6 @@ endfunction
 
 
 function! operator#jump_side#toggle(motion_wise, ...)
-	echom a:motion_wise
 	let pos = []
 	if g:operator_jump_side_toggle_start_pos == getpos("']")
 		let pos = getpos("'[")[1:]
